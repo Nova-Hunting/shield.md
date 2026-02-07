@@ -1,0 +1,331 @@
+:root {
+  --bg: #f8fbf8;
+  --panel: #ffffff;
+  --ink: #15221b;
+  --muted: #47594d;
+  --line: #dce8df;
+  --primary: #0f8a58;
+  --primary-ink: #0b5b3a;
+  --accent: #d2872a;
+  --topbar-bg: rgba(248, 251, 248, 0.82);
+  --topbar-line: rgba(21, 34, 27, 0.08);
+  --kicker-bg: #f0f7f3;
+  --block-bg: rgba(255, 255, 255, 0.92);
+  --pre-bg: #f3f8f4;
+  --pre-line: #d8e5db;
+  --grid-line: rgba(21, 34, 27, 0.03);
+  --ghost-bg: rgba(255, 255, 255, 0.65);
+  --glow-primary: rgba(15, 138, 88, 0.1);
+  --glow-accent: rgba(210, 135, 42, 0.15);
+  --mono: "IBM Plex Mono", monospace;
+  --sans: "Space Grotesk", sans-serif;
+}
+
+html[data-theme="dark"] {
+  --bg: #0d1218;
+  --panel: #131b24;
+  --ink: #e8f0f6;
+  --muted: #9fb2c2;
+  --line: #253544;
+  --primary: #2f86ff;
+  --primary-ink: #89bcff;
+  --accent: #35d4e5;
+  --topbar-bg: rgba(13, 18, 24, 0.82);
+  --topbar-line: rgba(232, 240, 246, 0.12);
+  --kicker-bg: #162332;
+  --block-bg: rgba(19, 27, 36, 0.92);
+  --pre-bg: #101821;
+  --pre-line: #223343;
+  --grid-line: rgba(232, 240, 246, 0.06);
+  --ghost-bg: rgba(20, 30, 40, 0.7);
+  --glow-primary: rgba(47, 134, 255, 0.22);
+  --glow-accent: rgba(53, 212, 229, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--sans);
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 0% 0%, var(--glow-primary), transparent 35%),
+    radial-gradient(circle at 100% 20%, var(--glow-accent), transparent 30%),
+    linear-gradient(transparent 95%, var(--grid-line) 95%),
+    linear-gradient(90deg, transparent 95%, var(--grid-line) 95%);
+  background-size: auto, auto, 28px 28px, 28px 28px;
+}
+
+.wrap {
+  width: min(1100px, calc(100% - 2.4rem));
+  margin: 0 auto;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(9px);
+  background: var(--topbar-bg);
+  border-bottom: 1px solid var(--topbar-line);
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 68px;
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.topbar nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.93rem;
+  font-weight: 500;
+}
+
+.hero {
+  padding: 5.6rem 0 3rem;
+}
+
+.kicker {
+  display: inline-block;
+  margin: 0;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--primary-ink);
+  background: var(--kicker-bg);
+}
+
+h1 {
+  margin: 0.95rem 0 0.6rem;
+  font-size: clamp(2.1rem, 5vw, 3.8rem);
+  line-height: 1.05;
+}
+
+.lead {
+  max-width: 740px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 1.06rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.3rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.72rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.93rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(15, 138, 88, 0.22);
+}
+
+.btn.ghost {
+  border-color: var(--line);
+  color: var(--ink);
+  background: var(--ghost-bg);
+}
+
+.block {
+  margin-top: 2.2rem;
+  padding: 1.3rem;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  background: var(--block-bg);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+}
+
+.copy-btn {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 0.65rem;
+  padding: 0.45rem 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.copy-btn.done {
+  border-color: var(--primary);
+  color: var(--primary-ink);
+}
+
+pre {
+  margin: 0;
+  overflow: auto;
+  border-radius: 0.85rem;
+  border: 1px solid var(--pre-line);
+  background: var(--pre-bg);
+  padding: 1rem;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 0.95rem;
+  padding: 1rem;
+  background: var(--panel);
+}
+
+.theme-toggle {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.62rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.card p,
+.card li {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.card ul,
+.card ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.limits-list {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.limits-list li {
+  margin: 0.34rem 0;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.positioning {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.footer {
+  padding: 2.5rem 0 2rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 860px) {
+  .topbar-inner {
+    min-height: 62px;
+  }
+
+  .topbar nav {
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .topbar nav a {
+    font-size: 0.8rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 4.6rem;
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

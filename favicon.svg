@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Shield icon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2b4eff"/>
+      <stop offset="100%" stop-color="#35d4e5"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield -->
+  <path
+    d="M32 8c7 5 14 6 20 8v16c0 13-8 22-20 28C20 54 12 45 12 32V16c6-2 13-3 20-8z"
+    fill="url(#g)"/>
+
+  <!-- Inner highlight -->
+  <path
+    d="M32 12c6 4 12 5 16 6v14c0 10-6 17-16 22C22 49 16 42 16 32V18c4-1 10-2 16-6z"
+    fill="url(#glow)"/>
+
+  <!-- Mark: a minimal 'check' to signal policy/enforcement -->
+  <path
+    d="M24 33l5 5 12-14"
+    fill="none"
+    stroke="#0b0f14"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+</svg>
